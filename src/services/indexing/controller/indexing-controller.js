@@ -15,7 +15,12 @@ export const postDocs = async (req, res, next) => {
     const fileLocation = `http://${host}:${port}/indexing/uploads/${encodedFilename}`;
     const id = `upload-${nanoid(16)}`;
 
-    await UploadDocsService.sendMessage({ message: fileLocation });
+    const message = {
+        fileLocation, 
+        type: 'docs',
+    };
+
+    await UploadDocsService.sendMessage({ message: JSON.stringify(message) });
     await IndexingRepositories.addDocs(id, req.file.originalname);
 
     return response(res, 201);

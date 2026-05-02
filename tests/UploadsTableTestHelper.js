@@ -12,6 +12,15 @@ const UploadsTableTestHelper = {
         await pool.query(query);
     }, 
 
+    async getUploadById(id) {
+        const query = {
+            text: 'SELECT * FROM uploads WHERE id = $1',
+            values: [id],
+        };
+        const result = await pool.query(query);
+        return result.rows;
+    },
+
     async cleanTable() {
         await pool.query('DELETE FROM uploads WHERE 1=1');
     }

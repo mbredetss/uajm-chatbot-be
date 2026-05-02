@@ -8,8 +8,8 @@ class IndexingRepositories {
 
     async addDocs(id, name) {
         const query = {
-            text: 'INSERT INTO uploads (id, name) VALUES ($1, $2)',
-            values: [id, name],
+            text: 'INSERT INTO uploads (id, name, type) VALUES ($1, $2, $3)',
+            values: [id, name, 'docs'],
         };
         await this._pool.query(query);
     }

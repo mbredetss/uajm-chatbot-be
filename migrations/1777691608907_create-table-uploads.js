@@ -10,6 +10,7 @@ export const shorthands = undefined;
  */
 export const up = (pgm) => {
     pgm.addType('upload_status', ['in progress', 'completed', 'failed']);
+    pgm.addType('type', ['docs', 'url']);
     pgm.createTable('uploads', {
         id: {
             type: 'VARCHAR(50)',
@@ -17,6 +18,10 @@ export const up = (pgm) => {
         }, 
         name: {
             type: 'TEXT',
+            notNull: true,
+        }, 
+        type: {
+            type: 'type',
             notNull: true,
         }, 
         status: {
@@ -35,4 +40,5 @@ export const up = (pgm) => {
 export const down = (pgm) => {
     pgm.dropTable('uploads');
     pgm.dropType('upload_status');
+    pgm.dropType('type');
 };

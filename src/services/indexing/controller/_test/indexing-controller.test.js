@@ -7,6 +7,7 @@ import config from '../../../../utils/config';
 import clearFileTest from '../../../../../tests/ClearFileTest.js';
 import pool from '../../../../../tests/pool.js';
 import clearQueue from '../../../../../tests/ClearQueue.js';
+import { it } from 'vitest';
 
 describe('Http Server', () => {
     afterAll(async () => {
@@ -29,6 +30,18 @@ describe('Http Server', () => {
             .post('/indexing/uploadDocs')
             .attach('file', filePath)
             .field('password', requestPayload.password);
+
+        expect(response.statusCode).toEqual(401);
+        expect(response.body.status).toEqual('failed');
+        expect(response.body.message).toEqual('dokumen gagal diunggah, pastikan password benar');
+    });
+
+    it('should response 401 when users do not input password', async () => {
+        const filePath = path.resolve(__dirname, '../../tests/accepted-format-docs.pdf')
+
+        const response = await request(app)
+            .post('/indexing/uploadDocs')
+            .attach('file', filePath);
 
         expect(response.statusCode).toEqual(401);
         expect(response.body.status).toEqual('failed');
