@@ -1,5 +1,5 @@
-const websiteIndexing = (url) => {
-    console.log(url);
+const websiteIndexing = (message) => {
+    console.log(message.fileLocation);
 }
 
 export default websiteIndexing;

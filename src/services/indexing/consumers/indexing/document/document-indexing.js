@@ -1,5 +1,5 @@
-const documentIndexing = (urlDocs) => {
-    console.log(urlDocs);
+const documentIndexing = (message) => {
+    console.log(message.fileLocation);
 }
 
 export default documentIndexing;

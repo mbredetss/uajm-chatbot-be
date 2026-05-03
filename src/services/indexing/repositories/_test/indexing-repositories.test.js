@@ -13,7 +13,7 @@ describe('IndexingRepositories', () => {
     });
 
     it('should add docs to the database', async () => {
-        await IndexingRepositories.addDocs('upload-123', 'sample-document-content.docx');
+        await IndexingRepositories.addDocs('upload-123', 'sample-document-content.docx', 'docs');
 
         const upload = await UploadsTableTestHelper.getUploadById('upload-123');
         expect(upload).toHaveLength(1);

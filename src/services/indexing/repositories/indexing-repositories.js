@@ -6,10 +6,10 @@ class IndexingRepositories {
         this._pool = new Pool(config.database);
     }
 
-    async addDocs(id, name) {
+    async addDocs(id, name, type) {
         const query = {
             text: 'INSERT INTO uploads (id, name, type) VALUES ($1, $2, $3)',
-            values: [id, name, 'docs'],
+            values: [id, name, type],
         };
         await this._pool.query(query);
     }
