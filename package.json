@@ -14,7 +14,7 @@
     "test:coverage": "vitest --coverage",
     "migrate": "node-pg-migrate",
     "migrate:test": "node-pg-migrate --envPath .test.env", 
-    "consumer": "node src/consumer/consumer.js"
+    "consumer": "node src/consumers/consumer.js"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.1.5",
